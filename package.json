@@ -1,6 +1,12 @@
 {
   "name": "angular-hackathon-starter",
-  "version": "0.0.0",
+  "version": "0.1.0",
+  "license": "MIT",
+  "author": {
+    "name": "Ahmet Uysal",
+    "email": "auysal16@ku.edu.tr",
+    "url": "https://github.com/ahmetuysal"
+  },
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
