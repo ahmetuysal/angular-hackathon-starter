@@ -1,1 +1,30 @@
-<p>navbar works!</p>
+<mat-toolbar class="mat-elevation-z8 navbar" role="heading">
+  <mat-toolbar-row class="firstRow">
+    <div class="navbarContent">
+      <a mat-button routerLink="/" aria-label="Project Logo" class="logo">
+        <img
+          class="logo-img"
+          src="../../../../assets/logo-small.svg"
+          alt="Project Logo"
+        />
+      </a>
+      <span class="spacer"></span>
+      <ng-container *ngIf="false; else authButtons">
+        <a mat-button [matMenuTriggerFor]="menu" class="menuButton">
+          <img
+            class="userImageMenu"
+            src="../../../../assets/default_user.svg"
+          />
+          <span class="dropdown accent"></span>
+        </a>
+        <mat-menu #menu="matMenu">
+          <a mat-menu-item>Log Out</a>
+        </mat-menu>
+      </ng-container>
+      <ng-template #authButtons>
+        <a mat-button color="accent" routerLink="/login">Login </a>
+        <a mat-raised-button routerLink="/signup" color="primary">Sign Up </a>
+      </ng-template>
+    </div>
+  </mat-toolbar-row>
+</mat-toolbar>
