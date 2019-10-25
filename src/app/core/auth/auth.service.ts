@@ -5,11 +5,18 @@ import {
   HttpResponse
 } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable, of } from 'rxjs';
+import { catchError, map } from 'rxjs/operators';
 import { environment } from '../../../environments/environment';
+import { CheckUsernameRequest } from '../request/check-username-request.model';
 import { LoginRequest } from '../request/login-request.model';
+import { CheckUsernameResponse } from '../response/check-username-response.model';
 import { GetUserResponse } from '../response/get-user-response.model';
 import { LoginResponse } from '../response/login-response.model';
 import { JwtService } from './jwt.service';
+import { SignupRequest } from '../request/signup-request.model';
+import { CheckEmailRequest } from '../request/check-email-request.model';
+import { CheckEmailResponse } from '../response/check-email-response.model';
 import { StateService } from '../services/state.service';
 
 @Injectable({
@@ -124,6 +131,102 @@ export class AuthService {
         throw error;
       }
     }
+  }
+
+  async attemptSignup(signupRequest: SignupRequest): Promise<boolean> {
+    const result: HttpResponse<object> = await this.http
+      .post(`${environment.apiUrl}auth/signup`, signupRequest, {
+        observe: 'response',
+        headers: this.setHeaders()
+      })
+      .toPromise();
+
+    if (result instanceof HttpErrorResponse) {
+      if (result.error instanceof ErrorEvent) {
+        // A client-side or network error occurred. Handle it accordingly.
+        console.error('An error occurred:', result.error.message);
+      } else {
+        // The backend returned an unsuccessful response code.
+        // The response body may contain clues as to what went wrong,
+        console.error(
+          `Backend returned code ${result.status}, ` +
+            `body was: ${result.error}`
+        );
+      }
+      return false;
+    } else {
+      return result.status === 201;
+    }
+  }
+
+  isUsernameAvailable(username: string): Observable<boolean> {
+    return this.http
+      .post<CheckUsernameResponse>(
+        `${environment.apiUrl}auth/check-username`,
+        new CheckUsernameRequest(username),
+        {
+          observe: 'response',
+          headers: this.setHeaders()
+        }
+      )
+      .pipe(
+        map(
+          (response: HttpResponse<CheckUsernameResponse>) =>
+            response.body.isUsernameAvailable
+        ),
+        catchError((error: HttpErrorResponse) => {
+          if (error.error instanceof ErrorEvent) {
+            // A client-side or network error occurred. Handle it accordingly.
+            console.error(
+              'A client-side or network error occurred on check username:',
+              error.error.message
+            );
+          } else {
+            // The backend returned an unsuccessful response code.
+            // The response body may contain clues as to what went wrong,
+            console.error(
+              `Backend returned code ${error.status} on check username, ` +
+                `body was: ${JSON.stringify(error.error)}`
+            );
+          }
+          return of(false);
+        })
+      );
+  }
+
+  isEmailAvailable(email: string): Observable<boolean> {
+    return this.http
+      .post<CheckEmailResponse>(
+        `${environment.apiUrl}auth/check-email`,
+        new CheckEmailRequest(email),
+        {
+          observe: 'response',
+          headers: this.setHeaders()
+        }
+      )
+      .pipe(
+        map(
+          (response: HttpResponse<CheckEmailResponse>) =>
+            response.body.isEmailAvailable
+        ),
+        catchError((error: HttpErrorResponse) => {
+          if (error.error instanceof ErrorEvent) {
+            // A client-side or network error occurred. Handle it accordingly.
+            console.error(
+              'A client-side or network error occurred on check username:',
+              error.error.message
+            );
+          } else {
+            // The backend returned an unsuccessful response code.
+            // The response body may contain clues as to what went wrong,
+            console.error(
+              `Backend returned code ${error.status} on check username, ` +
+                `body was: ${JSON.stringify(error.error)}`
+            );
+          }
+          return of(false);
+        })
+      );
   }
 
   private setHeaders(): HttpHeaders {

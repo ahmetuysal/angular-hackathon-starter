@@ -1,0 +1,112 @@
+<div class="container">
+  <div class="signup-container">
+    <img src="../../../../assets/logo-small.svg" class="logo" />
+    <mat-card class="signup-card" [attr.aria-busy]="waiting">
+      <mat-progress-bar
+        *ngIf="waiting"
+        mode="indeterminate"
+        class="progress-bar"
+      ></mat-progress-bar>
+      <mat-card-header>
+        <mat-card-title>
+          <span class="signup-text">Join to Project Name!</span>
+        </mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <form
+          [formGroup]="credentials"
+          class="signup-form"
+          (keyup.enter)="submit()"
+        >
+          <mat-form-field hideRequiredMarker="true" appearance="outline">
+            <mat-label>Name</mat-label>
+            <input
+              matInput
+              type="text"
+              formControlName="name"
+              required
+              #focusInitial
+            />
+          </mat-form-field>
+          <mat-form-field hideRequiredMarker="true" appearance="outline">
+            <mat-label>Surname</mat-label>
+            <input matInput type="text" formControlName="lastName" required />
+          </mat-form-field>
+
+          <mat-form-field hideRequiredMarker="true" appearance="outline">
+            <mat-label>Email Address</mat-label>
+            <input matInput type="email" formControlName="email" required />
+            <mat-icon
+              *ngIf="credentials.controls.email.hasError('uniqueEmail')"
+              matSuffix
+              class="error"
+              matTooltip="This email is already in use."
+              matTooltipPosition="after"
+              >error</mat-icon
+            >
+            <mat-icon
+              *ngIf="credentials.controls.email.valid"
+              matSuffix
+              class="success"
+              matTooltip="This email is not used available."
+              matTooltipPosition="after"
+              >done</mat-icon
+            >
+            <mat-hint *ngIf="credentials.controls.email.hasError('uniqueEmail')"
+              >Reset your account.</mat-hint
+            >
+          </mat-form-field>
+          <mat-form-field hideRequiredMarker="true" appearance="outline">
+            <mat-label>Username</mat-label>
+            <input matInput type="text" formControlName="username" required />
+            <mat-icon
+              *ngIf="credentials.controls.username.hasError('uniqueUsername')"
+              matSuffix
+              class="error"
+              matTooltip="This username is already taken."
+              matTooltipPosition="after"
+              >error</mat-icon
+            >
+            <mat-icon
+              *ngIf="credentials.controls.username.valid"
+              matSuffix
+              class="success"
+              matTooltip="This username is available."
+              matTooltipPosition="after"
+              >done</mat-icon
+            >
+            <mat-hint>You can use letters, numbers & hyphen(-).</mat-hint>
+          </mat-form-field>
+          <mat-form-field hideRequiredMarker="true" appearance="outline">
+            <mat-label>Password</mat-label>
+            <input
+              matInput
+              type="password"
+              formControlName="password"
+              required
+            />
+          </mat-form-field>
+        </form>
+      </mat-card-content>
+      <mat-card-actions>
+        <button
+          mat-raised-button
+          color="primary"
+          [disabled]="credentials.dirty && credentials.invalid"
+          class="signup-button"
+          (click)="submit()"
+        >
+          Sign Up
+        </button>
+      </mat-card-actions>
+      <mat-card-footer>
+        <p class="login">
+          Already have an account?
+          <a class="accent" routerLink="/login">
+            Login
+          </a>
+        </p>
+      </mat-card-footer>
+    </mat-card>
+  </div>
+</div>
