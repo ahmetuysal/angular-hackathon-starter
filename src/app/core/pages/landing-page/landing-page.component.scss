@@ -1,0 +1,107 @@
+.container {
+  height: 700px;
+  margin: 0 auto;
+  position: relative;
+  overflow: hidden;
+  margin-bottom: -40px;
+}
+
+.circle-orange-small {
+  height: 120px;
+  width: 120px;
+  position: absolute;
+  top: 80px;
+  left: 60px;
+  background-color: #fbba04;
+  border-radius: 50%;
+  opacity: 0.7;
+}
+
+.circle-orange-big {
+  height: 260px;
+  width: 260px;
+  position: absolute;
+  top: -110px;
+  right: 220px;
+  background-color: #fbba04;
+  border-radius: 50%;
+  opacity: 0.7;
+}
+
+.circle-blue {
+  height: 400px;
+  width: 400px;
+  position: absolute;
+  top: -150px;
+  right: -100px;
+  background-color: #0a8df3;
+  border-radius: 50%;
+  opacity: 0.5;
+}
+
+.circle-blue-small {
+  height: 170px;
+  width: 170px;
+  position: absolute;
+  bottom: -100px;
+  left: 50px;
+  background-color: #0a27f3;
+  border-radius: 50%;
+  opacity: 0.5;
+}
+
+.circle-center {
+  height: 600px;
+  width: 600px;
+  position: absolute;
+  top: 30px;
+  right: 110px;
+  background-color: #f70090;
+  border-radius: 50%;
+  opacity: 0.5;
+}
+
+.circle-center-text {
+  height: 600px;
+  width: 600px;
+  position: absolute;
+  top: 30px;
+  right: 110px;
+  background-color: transparent;
+  border-radius: 50%;
+  opacity: 1;
+  color: #fff;
+  padding: 12% 10%;
+  box-sizing: border-box;
+}
+
+h1 {
+  font-size: 42px;
+}
+
+hr {
+  width: 50%;
+  float: left;
+  background-color: #fff;
+  height: 1px;
+  border-color: #fff;
+}
+
+p {
+  margin-top: 5px;
+}
+
+.cta {
+  width: 100%;
+}
+
+.circle-green {
+  height: 250px;
+  width: 250px;
+  position: absolute;
+  bottom: 60px;
+  left: 150px;
+  background-color: #3bb508;
+  border-radius: 50%;
+  opacity: 0.5;
+}

@@ -7,9 +7,10 @@ import { SharedModule } from '../shared/shared.module';
 import { LoginPageComponent } from './pages/login-page/login-page.component';
 import { MaterialModule } from '../material/material.module';
 import { SignupPageComponent } from './pages/signup-page/signup-page.component';
+import { LandingPageComponent } from './pages/landing-page/landing-page.component';
 
 @NgModule({
-  declarations: [CoreComponent, LoginPageComponent, SignupPageComponent],
+  declarations: [CoreComponent, LoginPageComponent, SignupPageComponent, LandingPageComponent],
   imports: [CommonModule, CoreRoutingModule, SharedModule, MaterialModule]
 })
 export class CoreModule {}
