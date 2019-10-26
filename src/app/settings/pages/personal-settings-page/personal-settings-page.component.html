@@ -1,1 +1,97 @@
-<p>personal-settings-page works!</p>
+<h1 class="title">Personal Information</h1>
+<p class="description">
+  Information that can be seen in your public profile, e.g, your name and photo.
+</p>
+<mat-accordion multi="true">
+  <form [formGroup]="formGroup">
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          Name
+        </mat-panel-title>
+        <mat-panel-description>
+          {{ formGroup.controls.name.value }}
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+
+      <mat-form-field hideRequiredMarker="true" appearance="outline">
+        <mat-label>Name</mat-label>
+        <input
+          matInput
+          type="text"
+          formControlName="name"
+          required
+          #focusInitial
+        />
+      </mat-form-field>
+    </mat-expansion-panel>
+
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          Surname
+        </mat-panel-title>
+        <mat-panel-description>
+          {{ formGroup.controls.lastName.value }}
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+
+      <mat-form-field hideRequiredMarker="true" appearance="outline">
+        <mat-label>Surname</mat-label>
+        <input matInput type="text" formControlName="lastName" required />
+      </mat-form-field>
+    </mat-expansion-panel>
+
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          Image
+        </mat-panel-title>
+        <mat-panel-description>
+          {{ formGroup.controls.image.value }}
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+
+      <mat-form-field hideRequiredMarker="true" appearance="outline">
+        <mat-label>Image</mat-label>
+        <input matInput type="url" formControlName="image" required />
+      </mat-form-field>
+      <img
+        class="userImage"
+        [src]="
+          formGroup.controls.image.value ||
+          '../../../../assets/default_user.svg'
+        "
+      />
+    </mat-expansion-panel>
+
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          Birth Date
+        </mat-panel-title>
+        <mat-panel-description>
+          {{ formGroup.controls.birthDate.value | date: 'longDate' }}
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+
+      <mat-form-field hideRequiredMarker="true" appearance="outline">
+        <mat-label> Birth Date</mat-label>
+        <input
+          matInput
+          [matDatepicker]="birthDatePicker"
+          [max]="currentDate"
+          formControlName="birthDate"
+          required
+        />
+        <mat-datepicker-toggle
+          matSuffix
+          [for]="birthDatePicker"
+        ></mat-datepicker-toggle>
+        <mat-datepicker touchUi #birthDatePicker></mat-datepicker>
+      </mat-form-field>
+    </mat-expansion-panel>
+  </form>
+</mat-accordion>
+
+<button mat-raised-button>Save Changes</button>

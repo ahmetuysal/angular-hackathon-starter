@@ -1,0 +1,42 @@
+.title {
+  text-align: center;
+  font-weight: 400;
+  color: #202124;
+  margin-bottom: 0;
+}
+
+.description {
+  margin-top: 0;
+  text-align: center;
+  font-weight: 400;
+  color: rgba(0, 0, 0, 0.54);
+}
+
+.mat-expansion-panel-header-title {
+  letter-spacing: 0.07272727em;
+  word-break: break-word;
+  word-wrap: break-word;
+  color: #5f6368;
+  margin: 0;
+  padding: 0;
+  font-weight: 500;
+}
+
+.mat-expansion-panel-header-title,
+.mat-expansion-panel-header-description {
+  flex-basis: 0;
+}
+
+.mat-expansion-panel-header-description {
+  justify-content: space-between;
+  align-items: center;
+}
+
+.userImage {
+  width: 360px;
+  max-width: 100%;
+}
+
+mat-form-field {
+  width: 100%;
+}

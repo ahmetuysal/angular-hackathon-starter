@@ -44,7 +44,7 @@ export class SignupPageComponent implements OnInit, AfterViewInit {
       name: new FormControl('', {
         validators: [
           Validators.required,
-          Validators.maxLength(20),
+          Validators.maxLength(40),
           Validators.pattern('^[A-Za-zıöüçğşİÖÜÇĞŞñÑáéíóúÁÉÍÓÚ ]+$')
         ]
       }),
