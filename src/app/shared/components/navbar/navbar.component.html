@@ -9,16 +9,19 @@
         />
       </a>
       <span class="spacer"></span>
-      <ng-container *ngIf="false; else authButtons">
+      <ng-container
+        *ngIf="stateService.currentUser$ | async as user; else authButtons"
+      >
         <a mat-button [matMenuTriggerFor]="menu" class="menuButton">
           <img
             class="userImageMenu"
-            src="../../../../assets/default_user.svg"
+            [src]="user.image || '../../../../assets/default_user.svg'"
           />
           <span class="dropdown accent"></span>
         </a>
         <mat-menu #menu="matMenu">
-          <a mat-menu-item>Log Out</a>
+          <a mat-menu-item>Settings</a>
+          <a mat-menu-item (click)="logOut()">Log Out</a>
         </mat-menu>
       </ng-container>
       <ng-template #authButtons>
