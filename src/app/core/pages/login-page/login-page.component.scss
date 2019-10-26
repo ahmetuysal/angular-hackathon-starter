@@ -35,6 +35,7 @@ a:active {
 
     .login-card {
       width: 80%;
+      overflow: hidden;
     }
 
     .login-card[aria-busy='true']::after {
@@ -49,6 +50,8 @@ a:active {
       left: 0px;
       background: white;
       opacity: 0.6;
+      border-radius: 4px;
+      overflow: hidden;
     }
 
     .login-form {

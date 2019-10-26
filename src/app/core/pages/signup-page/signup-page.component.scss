@@ -43,6 +43,7 @@ a:active {
 
     .signup-card {
       width: 80%;
+      overflow: hidden;
     }
 
     .signup-card[aria-busy='true']::after {
@@ -57,6 +58,8 @@ a:active {
       left: 0px;
       background: white;
       opacity: 0.6;
+      border-radius: 4px;
+      overflow: hidden;
     }
 
     .signup-form {
