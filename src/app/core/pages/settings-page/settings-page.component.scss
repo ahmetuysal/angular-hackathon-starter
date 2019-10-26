@@ -1,9 +1,11 @@
+@import '~src/_theme-colors';
+
 .container {
   display: flex;
 }
 
 .active-route {
-  color: orange;
+  color: $primary;
 }
 
 .content {

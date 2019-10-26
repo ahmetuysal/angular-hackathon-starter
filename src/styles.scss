@@ -1,4 +1,9 @@
 /* You can add global styles to this file, and also import other style files */
+@import './theme-colors';
+@include mat-core();
+
+$app-theme: mat-light-theme($app-primary, $app-accent, $app-warn);
+@include angular-material-theme($app-theme);
 
 html,
 body {
