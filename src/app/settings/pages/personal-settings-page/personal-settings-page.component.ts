@@ -16,7 +16,7 @@ import { UserService } from '../../../core/http/user.service';
 })
 export class PersonalSettingsPageComponent implements OnInit {
   formGroup: FormGroup;
-  currentDate = moment();
+  currentDate = moment.utc();
   waiting = false;
 
   constructor(
