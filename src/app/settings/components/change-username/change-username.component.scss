@@ -1,0 +1,55 @@
+.section-title {
+  font-weight: 400;
+  color: #202124;
+  margin-left: 12px;
+}
+
+.mat-expansion-panel-header-title {
+  letter-spacing: 0.07272727em;
+  word-break: break-word;
+  word-wrap: break-word;
+  color: #5f6368;
+  margin: 0;
+  padding: 0;
+  font-weight: 500;
+}
+
+.mat-expansion-panel-header-title,
+.mat-expansion-panel-header-description {
+  flex-basis: 0;
+}
+
+.mat-expansion-panel-header-description {
+  justify-content: space-between;
+  align-items: center;
+}
+
+mat-form-field {
+  width: 100%;
+}
+
+.submitButton {
+  margin-top: 16px;
+}
+
+.formContainer {
+  position: relative;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.formContainer[aria-busy='true']::after {
+  content: '';
+  display: block;
+  position: absolute;
+  padding: 0;
+  margin: 0;
+  width: 100%;
+  height: 100%;
+  top: 0px;
+  left: 0px;
+  background: white;
+  opacity: 0.6;
+  border-radius: 4px;
+  overflow: hidden;
+}

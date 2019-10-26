@@ -1,0 +1,33 @@
+<h2 class="section-title">Change Username</h2>
+<div class="formContainer" [attr.aria-busy]="waiting">
+  <mat-progress-bar
+    *ngIf="waiting"
+    mode="indeterminate"
+    class="progress-bar"
+  ></mat-progress-bar>
+  <mat-accordion>
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          Username
+        </mat-panel-title>
+        <mat-panel-description>
+          {{ usernameControl.value }}
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+
+      <mat-form-field hideRequiredMarker="true" appearance="outline">
+        <mat-label>Username</mat-label>
+        <input matInput type="text" [formControl]="usernameControl" required />
+      </mat-form-field>
+    </mat-expansion-panel>
+  </mat-accordion>
+  <button
+    mat-raised-button
+    (click)="updateUsername()"
+    class="submitButton"
+    color="primary"
+  >
+    Change Username
+  </button>
+</div>

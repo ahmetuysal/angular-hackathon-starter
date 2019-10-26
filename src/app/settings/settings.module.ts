@@ -8,9 +8,16 @@ import { MaterialModule } from '../material/material.module';
 import { PersonalSettingsPageComponent } from './pages/personal-settings-page/personal-settings-page.component';
 import { AccountSettingsPageComponent } from './pages/account-settings-page/account-settings-page.component';
 import { SecuritySettingsPageComponent } from './pages/security-settings-page/security-settings-page.component';
+import { ChangeUsernameComponent } from './components/change-username/change-username.component';
 
 @NgModule({
-  declarations: [SettingsPageComponent, PersonalSettingsPageComponent, AccountSettingsPageComponent, SecuritySettingsPageComponent],
+  declarations: [
+    SettingsPageComponent,
+    PersonalSettingsPageComponent,
+    AccountSettingsPageComponent,
+    SecuritySettingsPageComponent,
+    ChangeUsernameComponent
+  ],
   imports: [CommonModule, SettingsRoutingModule, SharedModule, MaterialModule]
 })
 export class SettingsModule {}

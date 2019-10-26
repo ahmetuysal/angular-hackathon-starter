@@ -1,4 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  ChangeDetectionStrategy,
+  ChangeDetectorRef
+} from '@angular/core';
 import {
   Validators,
   FormControl,
@@ -12,7 +17,8 @@ import { UserService } from '../../../core/http/user.service';
 @Component({
   selector: 'app-personal-settings-page',
   templateUrl: './personal-settings-page.component.html',
-  styleUrls: ['./personal-settings-page.component.scss']
+  styleUrls: ['./personal-settings-page.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class PersonalSettingsPageComponent implements OnInit {
   formGroup: FormGroup;
@@ -22,7 +28,8 @@ export class PersonalSettingsPageComponent implements OnInit {
   constructor(
     private readonly stateService: StateService,
     private readonly formBuilder: FormBuilder,
-    private readonly userService: UserService
+    private readonly userService: UserService,
+    private readonly changeDetectorRef: ChangeDetectorRef
   ) {}
 
   ngOnInit() {
@@ -76,6 +83,7 @@ export class PersonalSettingsPageComponent implements OnInit {
 
     this.userService.updateUser(currentUser).subscribe(isUpdated => {
       this.waiting = false;
+      this.changeDetectorRef.markForCheck();
       // TODO: notify user with snackbar
       console.log(isUpdated);
     });
