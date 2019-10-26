@@ -1,1 +1,22 @@
-<p>settings-page works!</p>
+<div class="container">
+  <mat-nav-list class="menu">
+    <a mat-list-item routerLink="" routerLinkActive="active-route">
+      <mat-icon matListIcon>info</mat-icon> Personal Information
+    </a>
+    <a mat-list-item routerLinkActive="active-route">
+      <mat-icon matListIcon>account_circle</mat-icon>Account
+    </a>
+    <a mat-list-item routerLinkActive="active-route">
+      <mat-icon matListIcon>security</mat-icon>
+      Security
+    </a>
+    <mat-divider></mat-divider>
+    <a mat-list-item routerLinkActive="active-route">
+      <mat-icon matListIcon>help</mat-icon>
+      Help
+    </a>
+  </mat-nav-list>
+  <div class="content">
+    <router-outlet></router-outlet>
+  </div>
+</div>
