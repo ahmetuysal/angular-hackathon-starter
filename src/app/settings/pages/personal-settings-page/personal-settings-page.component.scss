@@ -44,3 +44,25 @@ mat-form-field {
 .submitButton {
   margin-top: 16px;
 }
+
+.formContainer {
+  position: relative;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.formContainer[aria-busy='true']::after {
+  content: '';
+  display: block;
+  position: absolute;
+  padding: 0;
+  margin: 0;
+  width: 100%;
+  height: 100%;
+  top: 0px;
+  left: 0px;
+  background: white;
+  opacity: 0.6;
+  border-radius: 4px;
+  overflow: hidden;
+}

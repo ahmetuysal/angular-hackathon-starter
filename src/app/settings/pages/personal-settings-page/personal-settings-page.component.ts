@@ -17,6 +17,8 @@ import { UserService } from '../../../core/http/user.service';
 export class PersonalSettingsPageComponent implements OnInit {
   formGroup: FormGroup;
   currentDate = moment();
+  waiting = false;
+
   constructor(
     private readonly stateService: StateService,
     private readonly formBuilder: FormBuilder,
@@ -49,6 +51,11 @@ export class PersonalSettingsPageComponent implements OnInit {
   }
 
   async updatePersonalSettings() {
+    if (this.formGroup.invalid) {
+      return;
+    }
+    this.waiting = true;
+
     const currentUser = this.stateService.getCurrentUser();
 
     const name = this.formGroup.controls.name.value.trim();
@@ -68,6 +75,8 @@ export class PersonalSettingsPageComponent implements OnInit {
     currentUser.birthDate = this.formGroup.controls.birthDate.value;
 
     this.userService.updateUser(currentUser).subscribe(isUpdated => {
+      this.waiting = false;
+      // TODO: notify user with snackbar
       console.log(isUpdated);
     });
   }
