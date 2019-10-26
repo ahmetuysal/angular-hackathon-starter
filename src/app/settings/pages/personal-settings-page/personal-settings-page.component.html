@@ -94,4 +94,11 @@
   </form>
 </mat-accordion>
 
-<button mat-raised-button>Save Changes</button>
+<button
+  mat-raised-button
+  (click)="updatePersonalSettings()"
+  class="submitButton"
+  color="primary"
+>
+  Save Changes
+</button>

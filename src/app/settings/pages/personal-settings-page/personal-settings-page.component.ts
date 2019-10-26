@@ -7,6 +7,7 @@ import {
 } from '@angular/forms';
 import { StateService } from '../../../core/services/state.service';
 import * as moment from 'moment';
+import { UserService } from '../../../core/http/user.service';
 
 @Component({
   selector: 'app-personal-settings-page',
@@ -18,7 +19,8 @@ export class PersonalSettingsPageComponent implements OnInit {
   currentDate = moment();
   constructor(
     private readonly stateService: StateService,
-    private readonly formBuilder: FormBuilder
+    private readonly formBuilder: FormBuilder,
+    private readonly userService: UserService
   ) {}
 
   ngOnInit() {
@@ -43,6 +45,30 @@ export class PersonalSettingsPageComponent implements OnInit {
       }),
       image: new FormControl(currentUser.image),
       birthDate: new FormControl(currentUser.birthDate)
+    });
+  }
+
+  async updatePersonalSettings() {
+    const currentUser = this.stateService.getCurrentUser();
+
+    const name = this.formGroup.controls.name.value.trim();
+    const indexSpace = name.indexOf(' ');
+
+    const firstName = indexSpace !== -1 ? name.substring(0, indexSpace) : name;
+    currentUser.firstName = firstName;
+
+    if (indexSpace !== -1) {
+      currentUser.middleName = name.substring(indexSpace + 1);
+    }
+
+    currentUser.lastName = this.formGroup.controls.lastName.value.trim();
+
+    currentUser.image = this.formGroup.controls.image.value.trim();
+
+    currentUser.birthDate = this.formGroup.controls.birthDate.value;
+
+    this.userService.updateUser(currentUser).subscribe(isUpdated => {
+      console.log(isUpdated);
     });
   }
 }
