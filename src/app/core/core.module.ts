@@ -8,9 +8,10 @@ import { LoginPageComponent } from './pages/login-page/login-page.component';
 import { MaterialModule } from '../material/material.module';
 import { SignupPageComponent } from './pages/signup-page/signup-page.component';
 import { LandingPageComponent } from './pages/landing-page/landing-page.component';
+import { SettingsPageComponent } from './pages/settings-page/settings-page.component';
 
 @NgModule({
-  declarations: [CoreComponent, LoginPageComponent, SignupPageComponent, LandingPageComponent],
+  declarations: [CoreComponent, LoginPageComponent, SignupPageComponent, LandingPageComponent, SettingsPageComponent],
   imports: [CommonModule, CoreRoutingModule, SharedModule, MaterialModule]
 })
 export class CoreModule {}
