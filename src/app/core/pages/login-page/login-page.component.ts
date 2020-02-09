@@ -22,7 +22,7 @@ export class LoginPageComponent implements OnInit, AfterViewInit {
   credentials: FormGroup;
   waiting = false;
 
-  @ViewChild('focusInitial', { static: false }) focusInitial: ElementRef<
+  @ViewChild('focusInitial') focusInitial: ElementRef<
     HTMLInputElement
   >;
 

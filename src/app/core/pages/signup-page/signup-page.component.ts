@@ -28,7 +28,7 @@ import { uniqueEmailValidator } from '../../validators/unique-email-validator';
 export class SignupPageComponent implements OnInit, AfterViewInit {
   credentials: FormGroup;
   waiting = false;
-  @ViewChild('focusInitial', { static: false }) focusInitial: ElementRef<
+  @ViewChild('focusInitial') focusInitial: ElementRef<
     HTMLInputElement
   >;
 
